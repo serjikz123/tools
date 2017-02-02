@@ -222,5 +222,3 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
-
-Plugin::load('CakeExcel', ['bootstrap' => true, 'routes' => true]);
