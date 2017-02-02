@@ -4,64 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fb9abce22cc079fa5dbb31ff3b95cac",
+    "content-hash": "352756738f3f270f8085d317b0020e6c",
     "packages": [
-        {
-            "name": "Cewi/Excel",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cewi/excel.git",
-                "reference": "d93a4d677f23d8d4c9b085e696d377a45385e428"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cewi/excel/zipball/d93a4d677f23d8d4c9b085e696d377a45385e428",
-                "reference": "d93a4d677f23d8d4c9b085e696d377a45385e428",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "~3.0",
-                "cakephp/plugin-installer": "*",
-                "php": ">=5.4",
-                "phpoffice/phpexcel": "1.8.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Cewi\\Excel\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Cewi\\Excel\\Test\\": "tests",
-                    "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cornelius Wichmann",
-                    "role": "Author"
-                }
-            ],
-            "description": "Excel plugin for CakePHP 3",
-            "homepage": "https://github.com/cewi/excel",
-            "keywords": [
-                "cakephp",
-                "excel"
-            ],
-            "support": {
-                "issues": "https://github.com/cewi/excel/issues",
-                "source": "https://github.com/cewi/excel"
-            },
-            "time": "2017-01-19 19:41:02"
-        },
         {
             "name": "aura/installer-default",
             "version": "1.0.0",
@@ -399,6 +343,54 @@
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
             "time": "2016-04-28T03:01:34+00:00"
+        },
+        {
+            "name": "dakota/cake-excel",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dakota/CakeExcel.git",
+                "reference": "2d6f947e731802738a66c170b0fd78d0fe5d0ab0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dakota/CakeExcel/zipball/2d6f947e731802738a66c170b0fd78d0fe5d0ab0",
+                "reference": "2d6f947e731802738a66c170b0fd78d0fe5d0ab0",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.1",
+                "php": ">=5.4.16",
+                "phpoffice/phpexcel": "~1.8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "CakeExcel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Walther Lalk",
+                    "email": "emailme@waltherlalk.com"
+                }
+            ],
+            "description": "CakePHP excel generator",
+            "homepage": "https://github.com/dakota/CakeExcel",
+            "keywords": [
+                "PHPExcel",
+                "cakephp",
+                "dakota",
+                "excel"
+            ],
+            "time": "2016-07-18T08:37:03+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -2091,7 +2083,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cewi/excel": 20,
         "psy/psysh": 0
     },
     "prefer-stable": false,

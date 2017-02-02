@@ -68,11 +68,11 @@ class ComposerStaticInit04feb55f056305939f235a40c79fc988
             'Composer\\Semver\\' => 16,
             'Composer\\CaBundle\\' => 18,
             'Composer\\' => 9,
-            'Cewi\\Excel\\' => 11,
             'Cake\\Test\\' => 10,
             'Cake\\Composer\\' => 14,
             'Cake\\Chronos\\' => 13,
             'Cake\\' => 5,
+            'CakeExcel\\' => 10,
         ),
         'B' => 
         array (
@@ -195,10 +195,6 @@ class ComposerStaticInit04feb55f056305939f235a40c79fc988
         array (
             0 => __DIR__ . '/..' . '/composer/composer/src/Composer',
         ),
-        'Cewi\\Excel\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/Cewi/Excel/src',
-        ),
         'Cake\\Test\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/cakephp/tests',
@@ -214,6 +210,10 @@ class ComposerStaticInit04feb55f056305939f235a40c79fc988
         'Cake\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/cakephp/src',
+        ),
+        'CakeExcel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dakota/cake-excel/src',
         ),
         'Bake\\' => 
         array (
