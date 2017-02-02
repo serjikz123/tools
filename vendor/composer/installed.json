@@ -2097,61 +2097,53 @@
         ]
     },
     {
-        "name": "Cewi/Excel",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "dakota/cake-excel",
+        "version": "v2.0.1",
+        "version_normalized": "2.0.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/cewi/excel.git",
-            "reference": "d93a4d677f23d8d4c9b085e696d377a45385e428"
+            "url": "https://github.com/dakota/CakeExcel.git",
+            "reference": "2d6f947e731802738a66c170b0fd78d0fe5d0ab0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/cewi/excel/zipball/d93a4d677f23d8d4c9b085e696d377a45385e428",
-            "reference": "d93a4d677f23d8d4c9b085e696d377a45385e428",
+            "url": "https://api.github.com/repos/dakota/CakeExcel/zipball/2d6f947e731802738a66c170b0fd78d0fe5d0ab0",
+            "reference": "2d6f947e731802738a66c170b0fd78d0fe5d0ab0",
             "shasum": ""
         },
         "require": {
-            "cakephp/cakephp": "~3.0",
-            "cakephp/plugin-installer": "*",
-            "php": ">=5.4",
-            "phpoffice/phpexcel": "1.8.*"
+            "cakephp/cakephp": "~3.1",
+            "php": ">=5.4.16",
+            "phpoffice/phpexcel": "~1.8"
         },
         "require-dev": {
-            "phpunit/phpunit": "*"
+            "phpunit/phpunit": "4.1.*"
         },
-        "time": "2017-01-19T19:41:02+00:00",
+        "time": "2016-07-18T08:37:03+00:00",
         "type": "cakephp-plugin",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Cewi\\Excel\\": "src"
+                "CakeExcel\\": "src"
             }
         },
-        "autoload-dev": {
-            "psr-4": {
-                "Cewi\\Excel\\Test\\": "tests",
-                "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
-            }
-        },
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
         "authors": [
             {
-                "name": "Cornelius Wichmann",
-                "role": "Author"
+                "name": "Walther Lalk",
+                "email": "emailme@waltherlalk.com"
             }
         ],
-        "description": "Excel plugin for CakePHP 3",
-        "homepage": "https://github.com/cewi/excel",
+        "description": "CakePHP excel generator",
+        "homepage": "https://github.com/dakota/CakeExcel",
         "keywords": [
+            "PHPExcel",
             "cakephp",
+            "dakota",
             "excel"
-        ],
-        "support": {
-            "issues": "https://github.com/cewi/excel/issues",
-            "source": "https://github.com/cewi/excel"
-        }
+        ]
     }
 ]

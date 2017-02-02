@@ -118,6 +118,8 @@ class Xml2xlsController extends AppController
             } else {
                 $this->Flash->error( __('This is not XML file'));
             }   
+        } else {
+            $this->Flash->error( __('Invalid or empty request: '.print_r($this->request->data) ));
         }
 
         return $this->redirect('/xml2xls');
