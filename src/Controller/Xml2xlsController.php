@@ -21,6 +21,8 @@ use Cake\View\Exception\MissingTemplateException;
 
 use Cake\Utility\Xml;
 
+ini_set('memory_limit', '3048M');
+
 /**
  * Static content controller
  *
@@ -30,7 +32,6 @@ use Cake\Utility\Xml;
  */
 class Xml2xlsController extends AppController
 {
-
     public function index() {
         
     }
@@ -44,26 +45,98 @@ class Xml2xlsController extends AppController
             
             if(in_array($ext, ['xml'])) {
                 
-                $xmlObject = Xml::build(file_get_contents($file['tmp_name']));
-                $xmlArray = XML::toArray($xmlObject);
-                var_dump( $xmlArray );
-                //do the actual uploading of the file. First arg is the tmp name, second arg is
-                //where we are putting it
-                //move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . $file['name']);
+                if( $xmlObject = Xml::build(file_get_contents($file['tmp_name'])) ) {
 
-                //prepare the filename for database entry
-                //$this->data['Images']['image'] = $file['name'];
-            }
-            
-            
+                    $xmlArray = XML::toArray($xmlObject);
+                    
+                    if(is_array($xmlArray)) {
+                        $itemkey = empty($this->request->data['Xml2xls']['itemkey']) ? 'offer' : $this->request->data['Xml2xls']['itemkey'];
+
+                        $xmlArray = $this->_findCatalogItem($xmlArray, $itemkey);
+
+                        if($xmlArray && !empty($xmlArray)) {
+
+                            set_time_limit(240);
+
+                            $array_all_keys = [];
+
+                            foreach( $xmlArray as $key => $offer) {
+
+                                /**
+                                 * Convert arrays to dimensional array
+                                 */
+                                foreach($offer as $prop_key => $prop) {
+                                    if (is_array($prop)) {
+                                         if (!empty($prop)) {
+                                            // parse params
+                                            foreach($prop as $param) {
+                                                if(!empty($param['@name'])) {
+                                                    $xmlArray[$key][$param['@name']] = empty($param['@']) ? '' : $param['@'];
+                                                    if(!empty($param['@unit'])) {
+                                                        $xmlArray[$key][$param['@name']] .= ' ' . $param['@unit'];
+                                                    }
+                                                }
+                                            }
+                                         }
+                                        unset($xmlArray[$key][$prop_key]);
+                                    }
+                                }
+                                // save absent keys
+                                foreach($xmlArray[$key] as $item_key => $item_value) {
+                                    if(!in_array($item_key, $array_all_keys)) {
+                                        $array_all_keys[] = $item_key;
+                                    }
+                                }
+                            }
+
+                            // fill missing keys & sort rows
+                            foreach($xmlArray as $k => $item) {
+
+                                foreach($array_all_keys as $key) {
+                                    if(!isset($xmlArray[$k][$key])) {
+                                        $xmlArray[$k][$key] = '';
+                                    }
+                                }
+
+                                ksort($xmlArray[$k]);
+                            }
+
+                            $this->set('data', $xmlArray );
+
+                            $this->viewBuilder()->className('CakeExcel.Excel');
+
+                            return;
+                        } else {
+                            $this->Flash->error( __('Search key not found in the XML'));
+                        }
+                    } else {
+                        $this->Flash->error( __('Can`t convert XML to array'));
+                    }
+                } else {
+                    $this->Flash->error( __('Invalid XML'));
+                }
+            } else {
+                $this->Flash->error( __('This is not XML file'));
+            }   
         }
+
+        return $this->redirect('/xml2xls');
     }
     
-    public function extractXml() {
-        
-    }
-    
-    public function dispatchAll() {
-        
+    protected function _findCatalogItem(Array $data, $key) {
+
+        if (array_key_exists($key, $data)) {
+            return $data[$key];
+        }
+
+        foreach ($data as $item) {
+            if (is_array($item)) {
+                if ($catalog = $this->_findCatalogItem($item, $key)) {
+                    return $catalog;
+                }
+            }
+        }
+
+        return false;
     }
 }
